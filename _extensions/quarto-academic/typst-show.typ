@@ -59,6 +59,9 @@ $endif$
 $if(sansfont)$
   sansfont: ("$sansfont$",),
 $endif$
+$if(mathfont)$
+  mathfont: ("$mathfont$",),
+$endif$
 $if(fontsize)$
   fontsize: $fontsize$,
 $endif$

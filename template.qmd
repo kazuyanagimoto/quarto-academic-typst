@@ -1,6 +1,7 @@
 ---
 title: |
-  On the Surgical Removal of Cardassian Cranial Implants
+  On the Surgical Removal of \
+  Cardassian Cranial Implants
 subtitle: A case study of a Cardassian patient
 author:
   - name: Julian Bashir
@@ -47,8 +48,9 @@ format:
     number-sections: true
     mainfont: "Linux Libertine O"
     sansfont: "Jost"
+    mathfont: "Libertinus Math"
+    bibliographystyle: "chicago-author-date"
 ---
-
 
 We're acquainted with the wormhole phenomenon, but this... Is a remarkable piece of bio-electronic engineering by which I see much of the EM spectrum ranging from heat and infrared through radio waves, et cetera, and forgive me if I've said and listened to this a thousand times [@Lovelace:1842]. This planet's interior heat provides an abundance of geothermal energy. We need to neutralize the homing signal.
 

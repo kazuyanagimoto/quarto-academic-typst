@@ -27,6 +27,7 @@
   region: "US",
   font: (),
   sansfont: (),
+  mathfont: (),
   fontsize: 11pt,
   sectionnumbering: none,
   toc: false,
@@ -42,6 +43,7 @@
            region: region,
            font: font,
            size: fontsize)
+  show math.equation: set text(font: mathfont)
   set heading(numbering: sectionnumbering)
 
   show heading: it => [
@@ -49,10 +51,9 @@
     #block(smallcaps(it.body))
   ]
 
-
   if date != none {
     align(left)[#block()[
-      #text(weight: "bold", font: sansfont, size: 0.7em)[
+      #text(weight: "bold", font: sansfont, size: 0.8em)[
         #date
       ]
     ]]
