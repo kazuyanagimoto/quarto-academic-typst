@@ -47,6 +47,9 @@ format:
   quarto-academic-typst:
     number-sections: true
     mainfont: "Linux Libertine O"
+    mainfontoptions:
+      number-type: "old-style"
+      number-width: "proportional"
     sansfont: "Jost"
     mathfont: "Libertinus Math"
     bibliographystyle: "chicago-author-date"
@@ -56,7 +59,7 @@ We're acquainted with the wormhole phenomenon, but this... Is a remarkable piece
 
 # Main section
 
-It indicates a synchronic distortion in the areas emanating triolic waves. The cerebellum, the cerebral cortex, the brain stem,  the entire nervous system has been depleted of electrochemical energy [@Turing:1936]. 
+It indicates a synchronic distortion in the areas emanating triolic waves. The cerebellum, the cerebral cortex, the brain stem,  the entire nervous system has been depleted of electrochemical energy [@Turing:1936].
 
 ```{r}
 n_lights <- 2 + 2
@@ -67,7 +70,9 @@ Any device like that would produce high levels of triolic waves. These walls hav
 
 $$
 y = \text{Something} + \beta_1 x_1
-$$
+$$ {#eq-black-scholes}
+
+@eq-black-scholes
 
 ## Subsection
 
@@ -80,7 +85,7 @@ Assemble a team. Look at records of the Drema quadrant. Would these scans detect
 ```{r plot-n-lights}
 #| echo: false
 #| label: fig-n-lights
-#| fig-cap: There are four lights
+#| fig-cap: "**There Are Four Lights.** This is generated from the R code chunk `plot-n-lights`."
 #| fig-width: 5
 #| fig-height: 1
 #| fig-align: "center"

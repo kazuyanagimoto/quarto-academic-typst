@@ -28,6 +28,8 @@
   font: (),
   sansfont: (),
   mathfont: (),
+  number-type: auto,
+  number-width: auto,
   fontsize: 11pt,
   sectionnumbering: none,
   toc: false,
@@ -42,14 +44,41 @@
   set text(lang: lang,
            region: region,
            font: font,
-           size: fontsize)
+           size: fontsize,
+           number-type: number-type,
+           number-width: number-width,)
   show math.equation: set text(font: mathfont)
   set heading(numbering: sectionnumbering)
 
-  show heading: it => [
-    #set text(font: sansfont)
-    #block(smallcaps(it.body))
+  show heading: set text(font: sansfont)
+  show figure.caption: it => [
+    #set align(left)
+    #set text(font: sansfont, size: 0.9em)
+    #text(weight: "bold")[#it.supplement #it.numbering: ]
+    #it.body
   ]
+  
+  show ref: it => {
+    let eq = math.equation
+    let el = it.element
+    if el == none {
+      it
+    } else if el.func() == eq {
+      numbering(
+        el.numbering,
+        ..counter(eq).at(el.location())
+      )
+    } else if el.func() == figure {
+      el.supplement.text
+      link(el.location())[
+        #set text(fill: color-link)
+        #numbering(el.numbering,..el.counter.at(el.location()))
+      ]
+    } else {
+      it
+    }
+  }
+
 
   if date != none {
     align(left)[#block()[

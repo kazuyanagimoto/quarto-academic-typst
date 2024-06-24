@@ -56,6 +56,14 @@ $endif$
 $if(mainfont)$
   font: ("$mainfont$",),
 $endif$
+$if(mainfontoptions)$
+  $if(mainfontoptions.number-type)$
+    number-type: "$mainfontoptions.number-type$",
+  $endif$
+  $if(mainfontoptions.number-width)$
+    number-width: "$mainfontoptions.number-width$",
+  $endif$
+$endif$
 $if(sansfont)$
   sansfont: ("$sansfont$",),
 $endif$
