@@ -1,8 +1,7 @@
 ---
-title: |
-  On the Surgical Removal of \
-  Cardassian Cranial Implants
+title: On the Surgical Removal of Cardassian Cranial Implants
 subtitle: A case study of a Cardassian patient
+published: "Click [here](https://kazuyanagimoto.com/research/common-cheetah/yanagimoto_common_cheetah.pdf) for the latest version."
 author:
   - name: Julian Bashir
     email: jbashir@starfleet.ufp
@@ -55,6 +54,7 @@ format:
     bibliographystyle: "chicago-author-date"
 ---
 
+
 We're acquainted with the wormhole phenomenon, but this... Is a remarkable piece of bio-electronic engineering by which I see much of the EM spectrum ranging from heat and infrared through radio waves, et cetera, and forgive me if I've said and listened to this a thousand times [@Lovelace:1842]. This planet's interior heat provides an abundance of geothermal energy. We need to neutralize the homing signal.
 
 # Main section
@@ -70,9 +70,7 @@ Any device like that would produce high levels of triolic waves. These walls hav
 
 $$
 y = \text{Something} + \beta_1 x_1
-$$ {#eq-black-scholes}
-
-@eq-black-scholes
+$$
 
 ## Subsection
 
@@ -107,6 +105,4 @@ qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
 #### A 4th level heading
 
 qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-
-
 
