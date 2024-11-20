@@ -1,3 +1,5 @@
 *.pdf
 template.typ
 template_files/
+.Rproj.user
+.Rhistory

@@ -1,108 +1,106 @@
 ---
-title: On the Surgical Removal of Cardassian Cranial Implants
-subtitle: A case study of a Cardassian patient
-published: "Click [here](https://kazuyanagimoto.com/research/common-cheetah/yanagimoto_common_cheetah.pdf) for the latest version."
+title: Quarto Academic Typst
+subtitle: A minimalistic Quarto + Typst template for academic writing
 author:
-  - name: Julian Bashir
-    email: jbashir@starfleet.ufp
+  - name: Kazuharu Yanagimoto
+    email: kazuharu.yanagimoto@cemfi.edu.es
     orcid: 0009-0007-1967-8304
-    title: Chief Medical Officer
-    affiliations: 
-      - id: ds9
-        name: Starbase Deep Space Nine
-        department: Sick Bay
-        address: 1234 Main Street
-        city: Anytown
-        region: NY
-        country: USA
-        postal-code: 90210
-    attributes:
-      corresponding: true
-  - name: Elim Garak
-    email: tailor.spy@obsidianorder.card.gov
-    title: Shopkeeper and Tailor
     affiliations:
-      - id: terok
-        name: Terok Nor
-        department: Promenade
-      - ref: ds9
+      - name: CEMFI
 abstract: |
-  Space: the final frontier. These are the voyages of the starship *Enterprise*. Its continuing mission: to explore strange new worlds. To seek out new life and new civilizations. To boldly go where no one has gone before!
+  {{< lipsum 1 >}}
 thanks: |
-  Placeholder text generated at <https://vlad-saling.github.io/star-trek-ipsum/>.
+  You can write acknowledgements here.
 keywords:
-  - surgery
-  - espionage
-  - brains
-jel-codes:
-  - J16
-  - J22
-  - J31
+  - Quarto
+  - Typst
+  - format
 date: today
 date-format: full
 bibliography: references.bib
-keep-typ: true
 format:
-  quarto-academic-typst:
-    number-sections: true
-    mainfont: "Linux Libertine O"
-    mainfontoptions:
-      number-type: "old-style"
-      number-width: "proportional"
-    sansfont: "Jost"
-    mathfont: "Libertinus Math"
-    bibliographystyle: "chicago-author-date"
+  academic-typst:
+    section-numbering: "1.1.1"
+execute:
+  echo: false
 ---
 
+This document shows a minimal example of the template.
+For more information, see the [full demo](https://kazuyanagimoto.com/quarto-academic-typst/template-full.pdf) and its [source](https://kazuyanagimoto.com/quarto-academic-typst/template-full.qmd).
 
-We're acquainted with the wormhole phenomenon, but this... Is a remarkable piece of bio-electronic engineering by which I see much of the EM spectrum ranging from heat and infrared through radio waves, et cetera, and forgive me if I've said and listened to this a thousand times [@Lovelace:1842]. This planet's interior heat provides an abundance of geothermal energy. We need to neutralize the homing signal.
+# Section as Heading Level 1
 
-# Main section
+Section numbering can be specified in the YAML `section-numbering` field
+as other Typst templates.
 
-It indicates a synchronic distortion in the areas emanating triolic waves. The cerebellum, the cerebral cortex, the brain stem,  the entire nervous system has been depleted of electrochemical energy [@Turing:1936].
+## Subsection as Heading Level 2
+
+You can use LaTeX math expressions:
+
+$$
+Y_{it} = \alpha_i + \lambda_t + \sum_{k \neq -1} \tau_h \{E_i + k = t\} +
+\varepsilon_{it}.
+$$
+
+### Subsubsection as Heading Level 3
+
+I don't use and don't recommend using heading levels 3 and below but it works.
+
+## Citation
+
+You can cite a reference like this [@sun2021] or @callaway2021.
+Typst has some built-in citation styles. Check the [Typst documentation](https://typst.app/docs/reference/model/bibliography/#parameters-style) for more information.
+
+# Figures and Tables
+
+## Figures
+
+As @fig-hist-mpg shows, the caption is displayed below the figure.
+As a caption of the figure (`fig-cap`), I use bold text for the title and use a normal text for the description.
 
 ```{r}
-n_lights <- 2 + 2
-n_lights
+#| label: fig-hist-mpg
+#| fig-cap: "**Histogram of Miles per Gallon**. The x-axis shows the miles per gallon, and the y-axis shows the frequency."
+
+hist(mtcars$mpg)
 ```
 
-Any device like that would produce high levels of triolic waves. These walls have undergone some kind of selective molecular polarization. I haven't determined if our phaser energy can generate a stable field. We could alter the photons with phase discriminators.
+## Tables
 
-$$
-y = \text{Something} + \beta_1 x_1
-$$
+You can use [tinytable](https://vincentarelbundock.github.io/tinytable/)
+for general tables and [modelsummary](https://vincentarelbundock.github.io/modelsummary/) for regression tables.^[Since the default backend of `modelsummary` is `tinytable`, you can use the customization options of `tinytable` for `modelsummary`.]
+As @tbl-mtcars-head shows, the caption is displayed above the table.
+The notes of the table can be added using the `notes` argument of the `tinytable::tt()` function.
 
-## Subsection
+```{r}
+#| label: tbl-mtcars-head
+#| tbl-cap: Head of the mtcars Dataset
 
-Communication is not possible [@Keynes:1937]. The shuttle has no power (see @fig-n-lights). 
+library(tinytable)
 
-Using the gravitational pull of a star to slingshot back in time? We are going to Starbase Montgomery for Engineering consultations prompted by minor read-out anomalies. Probes have recorded unusual levels of geological activity in all five planetary systems. 
-
-Assemble a team. Look at records of the Drema quadrant. Would these scans detect artificial transmissions as well as natural signals?
-
-```{r plot-n-lights}
-#| echo: false
-#| label: fig-n-lights
-#| fig-cap: "**There Are Four Lights.** This is generated from the R code chunk `plot-n-lights`."
-#| fig-width: 5
-#| fig-height: 1
-#| fig-align: "center"
-par(mar = c(0, 0, 0, 0))
-plot(x = seq(1:n_lights), y = rep(1, 4), col = "darkgoldenrod1", 
-     pch = 8, cex = 4, axes = TRUE, ann = FALSE, xlab = FALSE, ylab = FALSE)
+mtcars[1:5, 1:5] |>
+  tt(width = 0.8,
+     notes = "_Notes_: This table shows the first six rows of the mtcars dataset.")
 ```
 
-## Other heading
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo 
+# Last words
 
-### Third
+I made this template for my working papers, so it may not be suitable for other fields than economics.
+I am happy to receive feedback and suggestions for improvement.
 
-inventore veritatis^[Thing] et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,^[Another thing] 
+{{< appendix >}}
 
-qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+# Supplemental Figures
 
-#### A 4th level heading
+The figure numbering will be reset to "A.1", "A.2", etc so that it is clear that these figures are part of the appendix.
 
-qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+```{r}
+#| label: fig-scatter-car
+#| fig-cap: "**Scatter Plot of Car Data**. The x-axis shows the weight of the car, and the y-axis shows the miles per gallon."
 
+plot(mtcars$wt, mtcars$mpg)
+```
+
+{{< pagebreak >}}
+<!-- Bibliography -->

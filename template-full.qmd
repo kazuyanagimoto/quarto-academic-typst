@@ -1,0 +1,120 @@
+---
+title: On the Surgical Removal of Cardassian Cranial Implants
+subtitle: A case study of a Cardassian patient
+published: "Click [here](https://kazuyanagimoto.com/research/common-cheetah/yanagimoto_common_cheetah.pdf) for the latest version."
+author:
+  - name: Julian Bashir
+    email: jbashir@starfleet.ufp
+    orcid: 0009-0007-1967-8304
+    title: Chief Medical Officer
+    affiliations: 
+      - id: ds9
+        name: Starbase Deep Space Nine
+        department: Sick Bay
+        address: 1234 Main Street
+        city: Anytown
+        region: NY
+        country: USA
+        postal-code: 90210
+    attributes:
+      corresponding: true
+  - name: Elim Garak
+    email: tailor.spy@obsidianorder.card.gov
+    title: Shopkeeper and Tailor
+    affiliations:
+      - id: terok
+        name: Terok Nor
+        department: Promenade
+      - ref: ds9
+abstract: |
+  Space: the final frontier. These are the voyages of the starship *Enterprise*. Its continuing mission: to explore strange new worlds. To seek out new life and new civilizations. To boldly go where no one has gone before!
+thanks: |
+  Placeholder text generated at <https://vlad-saling.github.io/star-trek-ipsum/>.
+keywords:
+  - surgery
+  - espionage
+  - brains
+jel-codes:
+  - J16
+  - J22
+  - J31
+date: today
+date-format: full
+bibliography: references.bib
+keep-typ: true
+format:
+  academic-typst:
+    number-sections: true
+    mainfont: "Linux Libertine O"
+    mainfontoptions:
+      number-type: "old-style"
+      number-width: "proportional"
+    sansfont: "Jost"
+    mathfont: "Libertinus Math"
+    bibliographystyle: "chicago-author-date"
+---
+
+
+We're acquainted with the wormhole phenomenon, but this... Is a remarkable piece of bio-electronic engineering by which I see much of the EM spectrum ranging from heat and infrared through radio waves, et cetera, and forgive me if I've said and listened to this a thousand times [@Lovelace:1842]. This planet's interior heat provides an abundance of geothermal energy. We need to neutralize the homing signal.
+
+# Main section
+
+It indicates a synchronic distortion in the areas emanating triolic waves. The cerebellum, the cerebral cortex, the brain stem,  the entire nervous system has been depleted of electrochemical energy [@Turing:1936].
+
+```{r}
+n_lights <- 2 + 2
+n_lights
+```
+
+Any device like that would produce high levels of triolic waves. These walls have undergone some kind of selective molecular polarization. I haven't determined if our phaser energy can generate a stable field. We could alter the photons with phase discriminators.
+
+$$
+y = \text{Something} + \beta_1 x_1
+$$
+
+## Subsection
+
+Communication is not possible [@Keynes:1937]. The shuttle has no power (see @fig-n-lights). 
+
+Using the gravitational pull of a star to slingshot back in time? We are going to Starbase Montgomery for Engineering consultations prompted by minor read-out anomalies. Probes have recorded unusual levels of geological activity in all five planetary systems. 
+
+Assemble a team. Look at records of the Drema quadrant. Would these scans detect artificial transmissions as well as natural signals?
+
+```{r plot-n-lights}
+#| echo: false
+#| label: fig-n-lights
+#| fig-cap: "**There Are Four Lights.** This is generated from the R code chunk `plot-n-lights`."
+#| fig-width: 5
+#| fig-height: 1
+#| fig-align: "center"
+par(mar = c(0, 0, 0, 0))
+plot(x = seq(1:n_lights), y = rep(1, 4), col = "darkgoldenrod1", 
+     pch = 8, cex = 4, axes = TRUE, ann = FALSE, xlab = FALSE, ylab = FALSE)
+```
+
+## Other heading
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo 
+
+### Third
+
+inventore veritatis^[Thing] et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,^[Another thing] 
+
+qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+
+
+{{< appendix >}}
+
+# Supplemental Figures
+
+```{r}
+#| echo: false
+#| label: fig-wt-mpg
+#| fig-cap: "**Weight vs. MPG.** This is generated from the R code chunk `plot-wt-mpg`."
+plot(x = mtcars$wt, y = mtcars$mpg)
+```
+
+{{< pagebreak >}}
+
+:::{#refs}
+:::

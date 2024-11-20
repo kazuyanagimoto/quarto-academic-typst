@@ -81,6 +81,7 @@
   }
 
   show link: set text(fill: color-link)
+  set bibliography(title: "References")
 
   if date != none {
     align(left)[#block()[
@@ -172,4 +173,22 @@
     columns(cols, doc)
   }
 
+}
+
+#let appendix(content) = {
+  // Reset Numbering
+  set heading(numbering: "A.1.1")
+  counter(heading).update(0)
+  counter(figure.where(kind: "quarto-float-fig")).update(0)
+  counter(figure.where(kind: "quarto-float-tbl")).update(0)
+
+  // Figure & Table Numbering
+  set figure(numbering: it => {
+    [A.#it]
+  })
+
+  // Appendix Start
+  pagebreak(weak: true)
+  text(size: 2em)[Appendix]
+  content
 }
