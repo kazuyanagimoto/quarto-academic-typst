@@ -1,0 +1,12 @@
+title: Quarto Academic Typst
+author: Kazuharu Yanagimoto
+version: 0.1.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    typst:
+      shortcodes:
+        - shortcodes.lua
+      template-partials:
+        - typst-template.typ
+        - typst-show.typ

@@ -1,0 +1,102 @@
+---
+title: Quarto Academic Typst
+subtitle: A minimalistic Quarto + Typst template for academic writing
+author:
+  - name: Kazuharu Yanagimoto
+    email: kazuharu.yanagimoto@cemfi.edu.es
+    orcid: 0009-0007-1967-8304
+    affiliations:
+      - name: CEMFI
+abstract: |
+  {{< lipsum 1 >}}
+thanks: |
+  You can write acknowledgements here.
+keywords:
+  - Quarto
+  - Typst
+  - format
+date: today
+date-format: full
+bibliography: references.bib
+format:
+  academic-typst:
+    section-numbering: "1.1.1"
+execute:
+  echo: false
+---
+
+This document shows a minimal example of the template.
+For more information, see the [full demo](https://kazuyanagimoto.com/quarto-academic-typst/template-full.pdf) and its [source](https://kazuyanagimoto.com/quarto-academic-typst/template-full.qmd).
+
+# Section as Heading Level 1
+
+Section numbering can be specified in the YAML `section-numbering` field
+as other Typst templates.
+
+## Subsection as Heading Level 2
+
+You can use LaTeX math expressions:
+
+$$
+Y_{it} = \alpha_i + \lambda_t + \sum_{k \neq -1} \tau_h \{E_i + k = t\} +
+\varepsilon_{it}.
+$$
+
+### Subsubsection as Heading Level 3
+
+I don't use and don't recommend using heading levels 3 and below but it works.
+
+## Citation
+
+You can cite a reference like this [@sun2021] or @callaway2021.
+Typst has some built-in citation styles. Check the [Typst documentation](https://typst.app/docs/reference/model/bibliography/#parameters-style) for more information.
+
+# Figures and Tables
+
+## Figures
+
+As @fig-hist-mpg shows, the caption is displayed below the figure.
+As a caption of the figure (`fig-cap`), I use bold text for the title and use a normal text for the description.
+
+```{r}
+#| label: fig-hist-mpg
+#| fig-cap: "**Histogram of Miles per Gallon**. The x-axis shows the miles per gallon, and the y-axis shows the frequency."
+
+hist(mtcars$mpg)
+```
+
+## Tables
+
+You can use [tinytable](https://vincentarelbundock.github.io/tinytable/)
+for general tables and [modelsummary](https://vincentarelbundock.github.io/modelsummary/) for regression tables.^[Since the default backend of `modelsummary` is `tinytable`, you can use the customization options of `tinytable` for `modelsummary`.]
+As @tbl-mtcars-head shows, the caption is displayed above the table.
+The notes of the table can be added using the `notes` argument of the `tinytable::tt()` function.
+
+```{r}
+#| label: tbl-mtcars-head
+#| tbl-cap: Head of the mtcars Dataset
+
+nt <- "_Notes_: This table shows the first six rows of the mtcars dataset."
+mtcars[1:5, 1:5] |>
+  tinytable::tt(width = 0.8, notes = nt)         
+```
+# Last words
+
+I made this template for my working papers, so it may not be suitable for other fields than economics.
+I am happy to receive feedback and suggestions for improvement.
+
+{{< appendix >}}
+
+# Supplemental Figures
+
+The figure numbering will be reset to "A.1", "A.2", etc so that it is clear that these figures are part of the appendix.
+
+```{r}
+#| label: fig-scatter-car
+#| fig-cap: "**Scatter Plot of Car Data**. The x-axis shows the weight of the car, and the y-axis shows the miles per gallon."
+
+plot(mtcars$wt, mtcars$mpg)
+```
+
+{{< pagebreak >}}
+<!-- Bibliography -->
