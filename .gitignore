@@ -1,5 +1,10 @@
+.DS_Store
 *.pdf
 template.typ
-template_files/
+template-full.typ
+*_files/
 .Rproj.user
 .Rhistory
+/.quarto/
+_site/
+docs/

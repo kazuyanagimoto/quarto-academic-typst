@@ -1,0 +1,4 @@
+_quarto.yml
+docs/
+*.Rproj
+static/

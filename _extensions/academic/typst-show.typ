@@ -5,8 +5,8 @@ $endif$
 $if(subtitle)$
   subtitle: [$subtitle$],
 $endif$
-$if(published)$
-  published: [$published$],
+$if(header)$
+  header: [$header$],
 $endif$
 $if(code-repo)$
   code-repo: [$code-repo$],
@@ -39,8 +39,14 @@ $endif$
 $if(keywords)$
   keywords: [$for(keywords)$$keywords$$sep$, $endfor$],
 $endif$
-$if(jel-codes)$
-  jel-codes: [$for(jel-codes)$$jel-codes$$sep$, $endfor$],
+$if(custom-keywords)$
+  custom-keywords: (
+    $for(custom-keywords)$
+      ( name: [$it.name$],
+        values: [$for(it.values)$$it$$sep$, $endfor$]
+      ),
+    $endfor$
+  ),
 $endif$
 $if(thanks)$
   thanks: [$thanks$],

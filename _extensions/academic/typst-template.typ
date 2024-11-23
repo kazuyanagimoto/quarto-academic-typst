@@ -5,13 +5,13 @@
 #let article(
   title: none,
   subtitle: none,
-  published: none,
+  header: none,
   code-repo: none,
   authors: none,
   date: none,
   abstract: none,
   keywords: none,
-  jel-codes: none,
+  custom-keywords: none,
   thanks: none,
   cols: 1,
   margin: (x: 1.25in, y: 1.25in),
@@ -43,15 +43,16 @@
   show math.equation: set text(font: mathfont)
   set heading(numbering: sectionnumbering)
 
-  show heading: set text(font: sansfont)
+  show heading: set text(font: sansfont, weight: "semibold")
+
   show figure.caption: it => [
     #set text(font: sansfont, size: 0.9em)
     #if it.supplement == [Figure] {
       set align(left)
-      text(weight: "bold")[#it.supplement #it.counter.display(it.numbering): ]
+      text(weight: "semibold")[#it.supplement #it.counter.display(it.numbering): ]
       it.body
     } else {
-      text(weight: "bold")[#it.supplement #it.counter.display(it.numbering): ]
+      text(weight: "semibold")[#it.supplement #it.counter.display(it.numbering): ]
       it.body
     }
     
@@ -85,11 +86,11 @@
 
   if date != none {
     align(left)[#block()[
-      #text(weight: "bold", font: sansfont, size: 0.8em)[
+      #text(weight: "semibold", font: sansfont, size: 0.8em)[
         #date
-        #if published != none {
+        #if header != none {
           h(3em)
-          text(weight: "regular")[#published]
+          text(weight: "regular")[#header]
         }
       ]
     ]]
@@ -105,7 +106,7 @@
   
   if title != none {
     align(left)[#block(spacing: 4em)[
-      #text(weight: "bold", size: 1.5em, font: sansfont)[
+      #text(weight: "semibold", size: 1.5em, font: sansfont)[
         #title
         #if thanks != none {
           footnote(numbering: "*", thanks)
@@ -143,17 +144,19 @@
 
   if abstract != none {
     block(inset: 2em)[
-      #text(weight: "bold", font: sansfont, size: 0.9em)[ABASTRACT] #h(0.5em)
+      #text(weight: "semibold", font: sansfont, size: 0.9em)[ABASTRACT] #h(0.5em)
       #text(font: sansfont)[#abstract]
       #if keywords != none {
-         text(weight: "bold", font: sansfont, size: 0.9em)[\ Keywords:]
+         text(weight: "semibold", font: sansfont, size: 0.9em)[\ Keywords:]
          h(0.5em)
          text(font: sansfont)[#keywords]
       }
-      #if jel-codes != none {
-         text(weight: "bold", font: sansfont, size: 0.9em)[\ JEL-codes:]
-         h(0.5em)
-         text(font: sansfont)[#jel-codes]
+      #if custom-keywords != none {
+        for it in custom-keywords {
+          text(weight: "semibold", font: sansfont, size: 0.9em)[\ #it.name:]
+          h(0.5em)
+          text(font: sansfont)[#it.values]
+        }
       }
     ]
   }  

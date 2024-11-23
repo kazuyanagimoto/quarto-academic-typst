@@ -76,14 +76,10 @@ The notes of the table can be added using the `notes` argument of the `tinytable
 #| label: tbl-mtcars-head
 #| tbl-cap: Head of the mtcars Dataset
 
-library(tinytable)
-
+nt <- "_Notes_: This table shows the first six rows of the mtcars dataset."
 mtcars[1:5, 1:5] |>
-  tt(width = 0.8,
-     notes = "_Notes_: This table shows the first six rows of the mtcars dataset.")
+  tinytable::tt(width = 0.8, notes = nt)         
 ```
-
-
 # Last words
 
 I made this template for my working papers, so it may not be suitable for other fields than economics.
