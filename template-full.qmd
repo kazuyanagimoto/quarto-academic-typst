@@ -11,7 +11,8 @@ author:
 abstract: |
   {{< lipsum 1 >}}
 thanks: |
-  This template is inspired by Kieran Healy's [LaTeX and Rmd template](https://github.com/kjhealy/latex-custom-kjh) and Andrew Heiss's [Hikmah Quarto template](https://github.com/andrewheiss/hikmah-academic-quarto).
+  This template is inspired by Kieran Healy's [LaTeX and Rmd template](https://github.com/kjhealy/latex-custom-kjh) and
+  Andrew Heiss's [Hikmah Quarto template](https://github.com/andrewheiss/hikmah-academic-quarto).
 keywords: [Quarto, Typst, format]
 custom-keywords:
   - name: JEL Codes
