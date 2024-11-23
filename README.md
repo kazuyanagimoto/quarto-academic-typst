@@ -1,17 +1,26 @@
-# Quarto-academic Format
+# Quarto-Academic-Typst Format
 
-## Installing
+A Quarto + Typst format for academic documents.
+The design is inspired by inspired by Kieran Healy's
+[LaTeX and Rmd template](https://github.com/kjhealy/latex-custom-kjh) and
+Andrew Heiss's [Hikmah Quarto template](https://github.com/andrewheiss/hikmah-academic-quarto).
 
-_TODO_: Replace the `<github-organization>` with your GitHub organization.
+Click the image below to see a [demo](https://kazuyanagimoto.com/quarto-academic-typst/template-full.pdf).
+Code is available [here](https://github.com/kazuyanagimoto/quarto-academic-typst/blob/main/template-full.qmd).
+
+[![Demo](img/template-full.png)](https://kazuyanagimoto.com/quarto-academic-typst/template-full.pdf)
+
+## Install
+
+If you would like to add the clean theme to an existing directory:
 
 ```bash
-quarto use template <github-organization>/quarto-academic
+quarto install extension kazuyanagimoto/quarto-academic-typst
 ```
 
-This will install the format extension and create an example qmd file
-that you can use as a starting place for your document.
+or you can use a Quarto template that bundles a .qmd starter file:
 
-## Using
-
-_TODO_: Describe how to use your format.
+```bash
+quarto use template kazuyanagimoto/quarto-academic-typst
+```
 
