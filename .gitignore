@@ -8,3 +8,4 @@ template-full.typ
 /.quarto/
 _site/
 docs/
+.vscode/

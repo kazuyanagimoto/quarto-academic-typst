@@ -3,3 +3,6 @@ docs/
 *.Rproj
 static/
 snapshot.R
+img/template-full.png
+renv.lock
+renv/
