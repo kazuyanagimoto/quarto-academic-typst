@@ -48,7 +48,7 @@ I don't use and don't recommend using heading levels 3 and below but it works.
 
 ## Citation
 
-You can cite a reference like this [@sun2021] or @callaway2021.
+You can cite a reference like this [@katsushika1831] or @horst2020.
 Typst has some built-in citation styles. Check the [Typst documentation](https://typst.app/docs/reference/model/bibliography/#parameters-style) for more information.
 
 # Figures and Tables
