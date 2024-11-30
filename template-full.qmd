@@ -24,9 +24,9 @@ format:
   academic-typst:
     section-numbering: "1.1.1"
     font-paths: ["./static/fonts"]
-    mainfont: Libertinus Serif
+    mainfont: "Libertinus Serif"
     sansfont: Jost
-    mathfont: Libertinus Math
+    mathfont: "Libertinus Math"
     bibliographystyle: "chicago-author-date"
     include-in-header:
       - text: '#import "@preview/mitex:0.2.4": *'
