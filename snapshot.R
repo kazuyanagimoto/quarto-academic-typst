@@ -2,4 +2,5 @@ system2("pdftocairo", args = c("-png", "docs/template-full.pdf", "img/template-f
 system2("convert", args = c("img/template-full-[1-3].png", "+append", "img/template-full-above.png"))
 system2("convert", args = c("img/template-full-[4-6].png", "+append", "img/template-full-below.png"))
 system2("convert", args = c("img/template-full-above.png", "img/template-full-below.png", "-append", "img/template-full.png"))
+file.copy("img/template-full-1.png", "img/thumbnail.png", overwrite = TRUE)
 unlink(list.files("img", pattern = "^template-full-.*\\.png$", full.names = TRUE))
