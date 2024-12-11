@@ -144,7 +144,7 @@
 
   if abstract != none {
     block(inset: 2em)[
-      #text(weight: "semibold", font: sansfont, size: 0.9em)[ABASTRACT] #h(0.5em)
+      #text(weight: "semibold", font: sansfont, size: 0.9em)[ABSTRACT] #h(0.5em)
       #text(font: sansfont)[#abstract]
       #if keywords != none {
          text(weight: "semibold", font: sansfont, size: 0.9em)[\ Keywords:]
