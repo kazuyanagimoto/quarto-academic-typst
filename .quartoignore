@@ -6,3 +6,4 @@ snapshot.R
 img/template-full.png
 renv.lock
 renv/
+README.qmd

@@ -46,6 +46,7 @@
   )
   show math.equation: set text(font: mathfont)
   set heading(numbering: sectionnumbering)
+  show heading: set text(font: sansfont, weight: "semibold")
 
   show figure.caption: it => context [
     #set text(font: sansfont, size: 0.9em)
