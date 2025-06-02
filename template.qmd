@@ -38,7 +38,7 @@ as other Typst templates.
 You can use LaTeX math expressions:
 
 $$
-Y_{it} = \alpha_i + \lambda_t + \sum_{k \neq -1} \tau_h \{E_i + k = t\} +
+Y_{it} = \alpha_i + \lambda_t + \sum_{k \neq -1} \tau_h \mathbb{1}\{E_i + k = t\} +
 \varepsilon_{it}.
 $$
 

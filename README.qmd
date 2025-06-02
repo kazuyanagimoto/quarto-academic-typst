@@ -1,0 +1,45 @@
+---
+format: gfm
+engine: knitr
+---
+
+# Quarto-Academic-Typst Format
+
+A Quarto + Typst format for academic documents.
+The design is inspired by inspired by Kieran Healy's
+[LaTeX and Rmd template](https://github.com/kjhealy/latex-custom-kjh) and
+Andrew Heiss's [Hikmah Quarto template](https://github.com/andrewheiss/hikmah-academic-quarto).
+
+Click the image below to see a [demo](https://kazuyanagimoto.com/quarto-academic-typst/template-full.pdf).
+Code is available [here](https://github.com/kazuyanagimoto/quarto-academic-typst/blob/main/template-full.qmd).
+
+
+```{bash}
+#| label: thumbnail
+#| include: false
+quarto render template-full.qmd -M keep-typ:true 
+typst compile template-full.typ img/thumbnail.svg --format svg --pages 1
+typst compile template-full.typ img/template-full-{p}.png --format png --pages 1-6
+magick img/template-full-[1-3].png +append img/template-full-above.png
+magick img/template-full-[4-6].png +append img/template-full-below.png
+magick img/template-full-above.png img/template-full-below.png -append img/template-full.png
+rm img/template-full-*.png
+```
+
+
+[![Demo](img/template-full.png)](https://kazuyanagimoto.com/quarto-academic-typst/template-full.pdf)
+
+## Install
+
+If you would like to add the clean theme to an existing directory:
+
+```{.bash}
+quarto install extension kazuyanagimoto/quarto-academic-typst
+```
+
+or you can use a Quarto template that bundles a .qmd starter file:
+
+```{.bash}
+quarto use template kazuyanagimoto/quarto-academic-typst
+```
+

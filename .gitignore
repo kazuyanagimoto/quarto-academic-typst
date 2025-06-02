@@ -9,3 +9,4 @@ template-full.typ
 _site/
 docs/
 .vscode/
+.Renviron

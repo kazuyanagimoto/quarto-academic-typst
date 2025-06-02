@@ -23,13 +23,29 @@ bibliography: references.bib
 format:
   academic-typst:
     section-numbering: "1.1.1"
-    font-paths: ["./static/fonts"]
-    mainfont: "Libertinus Serif"
-    sansfont: Jost
-    mathfont: "Libertinus Math"
     bibliographystyle: "chicago-author-date"
     include-in-header:
       - text: '#import "@preview/mitex:0.2.4": *'
+brand: 
+  typography:
+    fonts:
+      - family: Jost
+        source: google
+      - family: Libertinus Serif
+        source: file
+        files:
+          - path: static/fonts/Libertinus-7.051/static/OTF/LibertinusSerif-Regular.otf
+          - path: static/fonts/Libertinus-7.051/static/OTF/LibertinusSerif-Italic.otf
+            style: italic
+      - family: Libertinus Math
+        source: file
+        files:
+          - path: static/fonts/Libertinus-7.051/static/OTF/LibertinusMath-Regular.otf
+    base: Libertinus Serif
+    headings: Jost
+  defaults:
+    academic-typst:
+      mathfont: Libertinus Math
 execute: 
   echo: false
   warning: false
@@ -40,16 +56,14 @@ I use the Palmer penguins dataset [@horst2020] to demonstrate the features of th
 The code is available [here](https://kazuyanagimoto.com/quarto-academic-typst/template-full.qmd).
 
 ```{r}
-library(palmerpenguins)
+#| label: setup
 library(dplyr)
 library(ggplot2)
 library(patchwork)
 library(tinytable)
 library(modelsummary)
 library(showtext)
-```
 
-```{r}
 color_accent <- "#107895"
 color_accent2 <- "#9a2515"
 color_accent3 <- "#e64173"
@@ -60,40 +74,67 @@ font_base_light <- "Roboto Condensed Light"
 # font_add_google(font_base_regular, font_base_light)
 showtext_auto()
 
-theme_quarto <- function(font_title = font_base_regular,
-                        font_text = font_base_light,
-                        size_base = 11) {
-                          
-    ggplot2::theme_minimal(base_family = font_text, base_size = size_base) +
-        ggplot2::theme(
-        plot.title = ggplot2::element_text(size = size_base * 1.2, face = "bold",
-                                            family = font_title),
-        plot.subtitle = ggplot2::element_text(size = size_base, face = "plain",
-                                                family = font_text),
-        plot.caption = ggplot2::element_text(size = size_base * 0.6,
-                                            color = "grey50",
-                                            face = "plain",
-                                            family = font_text,
-                                            margin = ggplot2::margin(t = 10)),
-        panel.grid.minor = ggplot2::element_blank(),
-        strip.text = ggplot2::element_text(size = size_base * 0.9, hjust = 0,
-                                            family = font_text, face = "bold"),
-        strip.background = ggplot2::element_rect(fill = "#ffffff", color = NA),
-        axis.ticks = ggplot2::element_blank(),
-        axis.title = ggplot2::element_text(family = font_text, face = "plain",
-                                            size = size_base * 0.8),
-        axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 5)),
-        axis.text = ggplot2::element_text(family = font_text, face = "plain"),
-        legend.title = ggplot2::element_blank(),
-        legend.key = ggplot2::element_blank(),
-        legend.text = ggplot2::element_text(size = size_base * 0.75,
-                                            family = font_text, face = "plain"),
-        legend.spacing = ggplot2::unit(0.1, "lines"),
-        legend.box.margin = ggplot2::margin(t = -0.5, unit = "lines"),
-        legend.margin = ggplot2::margin(t = 0),
-        legend.position = "bottom",
-        plot.title.position = "plot"
-        )
+theme_quarto <- function(
+  font_title = font_base_regular,
+  font_text = font_base_light,
+  size_base = 11
+) {
+  ggplot2::theme_minimal(base_family = font_text, base_size = size_base) +
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(
+        size = size_base * 1.2,
+        face = "bold",
+        family = font_title
+      ),
+      plot.subtitle = ggplot2::element_text(
+        size = size_base,
+        face = "plain",
+        family = font_text
+      ),
+      plot.caption = ggplot2::element_text(
+        size = size_base * 0.6,
+        color = "grey50",
+        face = "plain",
+        family = font_text,
+        margin = ggplot2::margin(t = 10)
+      ),
+      panel.grid.minor = ggplot2::element_blank(),
+      strip.text = ggplot2::element_text(
+        size = size_base * 0.9,
+        hjust = 0,
+        family = font_text,
+        face = "bold"
+      ),
+      strip.background = ggplot2::element_rect(
+        fill = "#ffffff",
+        color = NA
+      ),
+      axis.ticks = ggplot2::element_blank(),
+      axis.title = ggplot2::element_text(
+        family = font_text,
+        face = "plain",
+        size = size_base * 0.8
+      ),
+      axis.title.x = ggplot2::element_text(
+        margin = ggplot2::margin(t = 5)
+      ),
+      axis.text = ggplot2::element_text(
+        family = font_text,
+        face = "plain"
+      ),
+      legend.title = ggplot2::element_blank(),
+      legend.key = ggplot2::element_blank(),
+      legend.text = ggplot2::element_text(
+        size = size_base * 0.75,
+        family = font_text,
+        face = "plain"
+      ),
+      legend.spacing = ggplot2::unit(0.1, "lines"),
+      legend.box.margin = ggplot2::margin(t = -0.5, unit = "lines"),
+      legend.margin = ggplot2::margin(t = 0),
+      legend.position = "bottom",
+      plot.title.position = "plot"
+    )
 }
 ```
 
@@ -112,7 +153,7 @@ Y_{it} = \alpha_i + \lambda_t + \sum_{k \neq -1} \tau_h \mathbb{1}\{E_i + k = t\
 $$
 
 I choose a mathematical font which supports the indicator function $\mathbb{1}\{\cdot\}$.
-Currently, I use the {{< meta mathfont >}} font.
+Currently, I use the Libertinus Math font.
 
 ### Subsubsection as Heading Level 3
 
@@ -140,9 +181,15 @@ As a caption of the figure (`fig-cap`), I use bold text for the title and use a 
 
 penguins |>
   filter(!is.na(sex)) |>
-  mutate(lbl_facet = recode_factor(sex, `male` = "Male", `female` = "Female")) |>
-  ggplot(aes(x = flipper_length_mm, y = bill_length_mm,
-             color = species, shape = species)) +
+  mutate(
+    lbl_facet = recode_factor(sex, `male` = "Male", `female` = "Female")
+  ) |>
+  ggplot(aes(
+    x = flipper_len,
+    y = bill_len,
+    color = species,
+    shape = species
+  )) +
   geom_point(size = 2) +
   geom_smooth(method = "lm", se = FALSE) +
   scale_color_manual(values = c(color_accent, color_accent2, color_accent3)) +
@@ -165,8 +212,12 @@ The reason why I don't use the `layout-col` option is that the caption is also s
 #|  The right panel shows the density of flipper length.
 
 p1 <- penguins |>
-  ggplot(aes(x = flipper_length_mm, y = body_mass_g,
-             color = species, shape = species)) +
+  ggplot(aes(
+    x = flipper_len,
+    y = body_mass,
+    color = species,
+    shape = species
+  )) +
   geom_point(size = 2) +
   scale_color_manual(values = c(color_accent, color_accent2, color_accent3)) +
   labs(x = "Flipper Length (mm)", y = "Body Mass (g)") +
@@ -174,13 +225,12 @@ p1 <- penguins |>
   theme(legend.position = c(0.9, 0.1))
 
 p2 <- penguins |>
-  ggplot(aes(x = flipper_length_mm, color = species, shape = species)) +
+  ggplot(aes(x = flipper_len, color = species, shape = species)) +
   geom_density() +
   scale_color_manual(values = c(color_accent, color_accent2, color_accent3)) +
   labs(x = "Flipper Length (mm)", y = "Density") +
   theme_quarto() +
-  theme(legend.position = c(0.9, 0.1),
-        panel.grid.major.x = element_blank())
+  theme(legend.position = c(0.9, 0.1), panel.grid.major.x = element_blank())
 
 p1 + p2
 ```
@@ -199,16 +249,33 @@ The notes of the table can be added using the `notes` argument of the `tinytable
 
 penguins |>
   filter(!is.na(sex)) |>
-  summarize(across(bill_length_mm:body_mass_g, ~mean(.x, na.rm = TRUE)),
-            .by = c(species, sex)) |>
-  tidyr::pivot_wider(names_from = sex,
-                     values_from = c(bill_length_mm, bill_depth_mm,
-                                     flipper_length_mm, body_mass_g)) |>
+  summarize(
+    across(bill_len:body_mass, ~ mean(.x, na.rm = TRUE)),
+    .by = c(species, sex)
+  ) |>
+  tidyr::pivot_wider(
+    names_from = sex,
+    values_from = c(
+      bill_len,
+      bill_dep,
+      flipper_len,
+      body_mass
+    )
+  ) |>
   select(species, ends_with("_male"), ends_with("_female")) |>
-  `colnames<-`(c("", rep(c("Bill Length (mm)", "Bill Depth (mm)",
-                                  "Flipper Length (mm)", "Body Mass (g)"),
-                                times = 4))) |>
-  tt(notes = "_Notes_: Data from Palmer penguins dataset.") |>
+  `colnames<-`(c(
+    "",
+    rep(
+      c(
+        "Bill Length (mm)",
+        "Bill Depth (mm)",
+        "Flipper Length (mm)",
+        "Body Mass (g)"
+      ),
+      times = 4
+    )
+  )) |>
+  tt(notes = "Notes: Data from Palmer penguins dataset.") |>
   group_tt(j = list("Male" = 2:5, "Female" = 6:9)) |>
   format_tt(j = c(2:9), digits = 4)
 ```
@@ -233,16 +300,20 @@ gm <- tibble(
   fmt = c(0, 3)
 )
 
-list("(1)" = lm(bill_length_mm ~ species, data = penguins),
-     "(2)" = lm(bill_length_mm ~ species + sex, data = penguins),
-     "(3)" = lm(bill_length_mm ~ species + sex + year, data = penguins),
-     "(4)" = lm(body_mass_g ~ species, data = penguins),
-     "(5)" = lm(body_mass_g ~ species + sex, data = penguins),
-     "(6)" = lm(body_mass_g ~ species + sex + year, data = penguins)) |>
-  modelsummary(stars = c("+" = .1, "*" = .05, "**" = .01),
-               coef_map = cm,
-               gof_map = gm,
-               notes = "_Notes_: Data from Palmer penguins dataset.") |>
+list(
+  "(1)" = lm(bill_len ~ species, data = penguins),
+  "(2)" = lm(bill_len ~ species + sex, data = penguins),
+  "(3)" = lm(bill_len ~ species + sex + year, data = penguins),
+  "(4)" = lm(body_mass ~ species, data = penguins),
+  "(5)" = lm(body_mass ~ species + sex, data = penguins),
+  "(6)" = lm(body_mass ~ species + sex + year, data = penguins)
+) |>
+  modelsummary(
+    stars = c("+" = .1, "*" = .05, "**" = .01),
+    coef_map = cm,
+    gof_map = gm,
+    notes = "Notes: Data from Palmer penguins dataset."
+  ) |>
   group_tt(j = list("Bill Length (mm)" = 2:4, "Body Mass (g)" = 5:7))
 ```
 
@@ -257,16 +328,21 @@ I write a custom theme for `tinytable` to convert LaTeX math expressions to MiTe
 The following table includes LaTeX math expressions but will be converted to MiTeX expressions in the Typst output.
 
 ```{r}
+#| label: prep-mitex
 theme_mitex <- function(x, ...) {
-    fn <- function(table) {
-        if (isTRUE(table@output == "typst")) {
-          table@table_string <- gsub("\\$(.*?)\\$", "#mitex(`\\1`)", table@table_string)
-        }
-        return(table)
+  fn <- function(table) {
+    if (isTRUE(table@output == "typst")) {
+      table@table_string <- gsub(
+        "\\$(.*?)\\$",
+        "#mi(`\\1`)",
+        table@table_string
+      )
     }
-    x <- style_tt(x, finalize = fn)
-    x <- theme_tt(x, theme = "default")
-    return(x)
+    return(table)
+  }
+  x <- style_tt(x, finalize = fn)
+  x <- theme_tt(x, theme = "default")
+  return(x)
 }
 
 options(tinytable_html_mathjax = TRUE)
@@ -295,7 +371,7 @@ On the other hand, the figure numbering will be reset to "A.1", "A.2"
 so that it is clear that these figures are part of the appendix.
 The "A" stands for the "Appendix", not the section numbering.
 
-![**The Great Wave off Kanagawa**. A woodblock print by @katsushika1831.](img/hokusai_kanagawa.jpg){#fig-img}
+![**The Great Wave off Kanagawa**. A woodblock print by @katsushika1831.](img/hokusai_kanagawa.jpg){#fig-img width=80%}
 
 
 {{< pagebreak >}}
