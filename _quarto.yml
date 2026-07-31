@@ -4,3 +4,6 @@ project:
   render:
     - "*.qmd"
     - "!static/"
+    # Quarto ignores `renv/` out of the box but not `rv/`, whose library
+    # ships vignettes as .qmd files.
+    - "!rv/"

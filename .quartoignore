@@ -4,6 +4,8 @@ docs/
 static/
 snapshot.R
 img/template-full.png
-renv.lock
-renv/
+rproject.toml
+rv.lock
+rv/
+.Rprofile
 README.qmd

@@ -25,7 +25,7 @@ format:
     section-numbering: "1.1.1"
     bibliographystyle: "chicago-author-date"
     include-in-header:
-      - text: '#import "@preview/mitex:0.2.4": *'
+      - text: '#import "@preview/mitex:0.2.7": *'
 brand: 
   typography:
     fonts:

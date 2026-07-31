@@ -1,0 +1,22 @@
+[project]
+name = "quarto-academic-typst"
+r_version = "4.6"
+
+# Order matters: a package is taken from the first repository that provides it.
+repositories = [
+    {alias = "PPM", url = "https://packagemanager.posit.co/cran/latest"},
+    {alias = "CRAN", url = "https://cloud.r-project.org/"},
+]
+
+# Packages used by the demo documents (template.qmd, template-full.qmd).
+dependencies = [
+    "knitr",
+    "rmarkdown",
+    "dplyr",
+    "tidyr",
+    "ggplot2",
+    "patchwork",
+    "showtext",
+    "tinytable",
+    "modelsummary",
+]
