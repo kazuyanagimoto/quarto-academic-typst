@@ -24,7 +24,7 @@ jobs:
           use-public-rspm: true
 
       - name: Set up rv
-        uses: a2-ai/setup-rv@v1
+        uses: a2-ai/setup-rv@v1.0.0
 
       - name: Cache R packages
         uses: actions/cache@v4
