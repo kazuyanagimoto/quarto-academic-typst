@@ -26,7 +26,7 @@ execute:
 ---
 
 This document shows a minimal example of the template.
-For more information, see the [full demo](https://kazuyanagimoto.com/quarto-academic-typst/template-full.pdf) and its [source](https://kazuyanagimoto.com/quarto-academic-typst/template-full.qmd).
+For more information, see the [full demo](https://kazuyanagimoto.com/quarto-academic-typst/template-full.pdf) and its [source](https://github.com/kazuyanagimoto/quarto-academic-typst/blob/main/template-full.qmd).
 
 # Section as Heading Level 1
 

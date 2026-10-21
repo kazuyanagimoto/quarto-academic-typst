@@ -54,7 +54,7 @@ execute:
 
 This document shows a practical usage of the template.
 I use the Palmer penguins dataset [@horst2020] to demonstrate the features of the template.
-The code is available [here](https://kazuyanagimoto.com/quarto-academic-typst/template-full.qmd).
+The code is available [here](https://github.com/kazuyanagimoto/quarto-academic-typst/blob/main/template-full.qmd).
 
 ```{r}
 #| label: setup
